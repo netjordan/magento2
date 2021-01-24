@@ -3,10 +3,10 @@ version: 2
 jobs:
   build:
     docker:
-     - image: circleci:php-7.4-cli
+     - image: circleci:php:7.4-cli
     steps:
      - run: sudo composer self-update
-     - restore_cache: 
+     - restore_cache:
         keys:
          - composer-v1-{{ checksum "composer.lock" }}
          - composer-v1
@@ -14,4 +14,4 @@ jobs:
      -  save_cache:
           key: composer-v1-{{ checksum "composer.lock" }}
           paths:
-            - vendor 
+            - vendor
